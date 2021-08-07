@@ -12,4 +12,12 @@
             <class name="TestAccount"></class>
         </classes>
     </test>
+    <!--
+    <test name="Login Test - IE">
+        <parameter name="browser" value="ie"></parameter>
+        <classes>
+            <class name="TestAccount"></class>
+        </classes>
+    </test>
+    -->
 </suite>
