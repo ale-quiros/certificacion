@@ -6,10 +6,12 @@
             <class name="TestAccount"></class>
         </classes>
     </test>
-    <test name="Login Test - FireFox">
+    <test name="Search Test - FireFox">
         <parameter name="browser" value="firefox"></parameter>
+        <parameter name="searchCriteria" value="iphone"></parameter>
+        <parameter name="expectedResult" value="1"></parameter>
         <classes>
-            <class name="TestAccount"></class>
+            <class name="TestSearch"></class>
         </classes>
     </test>
     <!--

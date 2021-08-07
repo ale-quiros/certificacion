@@ -2,23 +2,25 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 public class TestSearch extends BaseClass {
     @Test
-    public void Validate_Search(){
-       String searchCriteria = "Macbook";
-       int expectedResult = 3;
+    @Parameters ({"searchCriteria", "expectedResult"})
+    public void Validate_Search(@Optional("macbook") String searchCriteria, @Optional ("3") String expectedResult){
+        int results = Integer.parseInt(expectedResult);
 
-       WebElement searchInput = driver.findElement(By.name("search"));
-       searchInput.sendKeys(searchCriteria, Keys.ENTER);
+        WebElement searchInput = driver.findElement(By.name("search"));
+        searchInput.sendKeys(searchCriteria, Keys.ENTER);
 
         Assert.assertTrue(driver.getCurrentUrl().contains("search=" + searchCriteria));
-
-        Assert.assertEquals(getResults(), expectedResult,
-                String.format("Expecting %s results but got %s", expectedResult, getResults()));
+        int actualResults =  getResults();
+        Assert.assertEquals(actualResults, results,
+                String.format("Expecting %s results but got %s", results, actualResults));
     }
 
     @Test
@@ -34,6 +36,6 @@ public class TestSearch extends BaseClass {
     }
 
     public int getResults(){
-        return driver.findElements(By.cssSelector(".product-thumb")).size();
+        return driver.findElements(By.className("product-thumb")).size();
     }
 }
