@@ -15,16 +15,9 @@ import java.util.concurrent.TimeUnit;
 public class BaseClass {
     protected WebDriver driver;
 
-    @BeforeTest
-    public void BeforeTest(){
-      //  System.out.println("* Esto corre una vez");
-    }
-
     @Parameters({"browser"})
     @BeforeMethod
     public void BeforeMethod(@Optional("chrome") String browser){
-      //  System.out.println("** Esto corre dos vez");
-
         switch (browser) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
@@ -45,10 +38,6 @@ public class BaseClass {
         driver.get("https://demo.opencart.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-    }
-
-    @AfterTest
-    public void AfterTest(){
     }
 
     @AfterMethod
