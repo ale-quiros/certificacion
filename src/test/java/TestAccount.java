@@ -9,33 +9,33 @@ import org.testng.annotations.*;
 public class TestAccount extends BaseClass{
 
     @Description("Validate test login was successful")
-    @Test(description = "Test Loggin Success")
+    @Test(description = "Test Login Success")
     public void Test_Login_Successful(){
         HeaderPage headerPage = new HeaderPage(driver);
-        LoginPage logginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
         String username = "ale@test.com";
         String password = "1234";
 
-        logginPage.GoTo();
-        logginPage.login(username, password);
+        loginPage.GoTo();
+        loginPage.login(username, password);
 
         WebElement logoutButton = driver.findElement(By.linkText("Logout"));
         Assert.assertTrue(logoutButton.isDisplayed());
     }
 
-    @Description("Validate test login is working with no valid credentiasls")
+    @Description("Validate test login is working with no valid credentials")
     @Test(description = "Test Login unsuccessful")
     public void Test_Login_UnSuccessful(){
         HeaderPage headerPage = new HeaderPage(driver);
-        LoginPage logginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
         String username = "ale@test.com";
         String password = "123";
         String expectedMessage = "warning: no match for e-mail address and/or password.";
 
-        logginPage.GoTo();
-        logginPage.login(username, password);
+        loginPage.GoTo();
+        loginPage.login(username, password);
 
         WebElement alertMessage = driver.findElement(By.xpath("//div[contains(@class, 'alert-danger')]"));
         Assert.assertEquals(expectedMessage.toLowerCase(), alertMessage.getText().toLowerCase().trim());
