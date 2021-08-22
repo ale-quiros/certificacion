@@ -2,15 +2,11 @@ package selenium;
 
 import PageObjects.SearchResultsPage;
 import dataProviders.SearchProvider;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pojo.SearchData;
-import PageObjects.BaseClass;
 
 public class TestSearch extends BaseClass {
     @Test

@@ -3,17 +3,17 @@ package PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HeaderPage {
-    private WebDriver driver;
+public class HeaderPage extends BasePage{
 
     //Elementos
     private By myAccountLinkLocator = By.className("caret");
     private By loginButtonLocator = By.linkText("Login");
     private By registerButtonlocator = By.linkText("Register");
     private By shoppingCartLocator = By.linkText("Shopping Cart");
+    private By yourStoreButtonLocator = By.linkText("Your Store");
 
     public HeaderPage(WebDriver _driver){
-        this.driver = _driver;
+        super(_driver);
     }
 
     public void ClickMyAccount(){
@@ -31,6 +31,8 @@ public class HeaderPage {
     public void clickOnCartButton(){
         driver.findElement(shoppingCartLocator).click();
     }
+
+    public void clickOnYourStoreButton() {driver.findElement(yourStoreButtonLocator).click();}
 
 
 }

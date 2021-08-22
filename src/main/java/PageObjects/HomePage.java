@@ -4,11 +4,10 @@ import Selectors.HomePageLocators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage extends BaseClass{
-    private WebDriver driver;
+public class HomePage extends BasePage{
 
     public HomePage(WebDriver _driver){
-        this.driver = _driver;
+        super(_driver);
     }
 
     public String getProductName(){
@@ -23,6 +22,11 @@ public class HomePage extends BaseClass{
         String name = getProductName();
         selectProductByName(name);
         return name;
+    }
+
+    public void GoTo(){
+        HeaderPage headerPage = new HeaderPage(driver);
+        headerPage.clickOnYourStoreButton();
     }
 
 }

@@ -2,10 +2,8 @@ package PageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 
-public class RegisterPage {
-    private WebDriver driver;
+public class RegisterPage extends BasePage{
 
     //Find elements
     private By firstnameLocator = By.name("firstname");
@@ -20,7 +18,7 @@ public class RegisterPage {
     private By confimRegiterMessageLocator = By.xpath("//div[@id='content']/h1");
 
     public RegisterPage(WebDriver _driver){
-        this.driver = _driver;
+        super(_driver);
     }
 
     public void GoTo(){

@@ -3,11 +3,10 @@ package PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ProductPage extends BaseClass{
-    private WebDriver driver;
+public class ProductPage extends BasePage{
 
     public ProductPage(WebDriver _driver){
-        this.driver = _driver;
+        super(_driver);
     }
 
     //elements

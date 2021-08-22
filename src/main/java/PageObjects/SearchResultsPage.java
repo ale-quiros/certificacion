@@ -1,11 +1,9 @@
 package PageObjects;
 
-import PageObjects.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-public class SearchResultsPage extends BaseClass {
+public class SearchResultsPage extends BasePage{
 
     private static final String ERROR_MESSAGE_NO_RESULTS_DISPLAYED = "There is no product that matches the search criteria.";
     //FindElements
@@ -14,8 +12,8 @@ public class SearchResultsPage extends BaseClass {
     private By searchFieldLocator = By.name("search");
     private By searchButtonLocator = By.xpath("//button[@class='btn btn-default btn-lg']");
 
-    public SearchResultsPage(WebDriver driver){
-        super.driver = driver;
+    public SearchResultsPage(WebDriver _driver){
+        super(_driver);
     }
 
     public int getResultsCount(){
