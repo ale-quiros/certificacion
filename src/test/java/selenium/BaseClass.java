@@ -1,5 +1,6 @@
-package PageObjects;
+package selenium;
 
+import PageObjects.PageObjectHandler;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -14,7 +15,7 @@ import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseClass extends PageObjectHandler{
+public class BaseClass extends PageObjectHandler {
 
     @Parameters({"browser"})
     @BeforeMethod

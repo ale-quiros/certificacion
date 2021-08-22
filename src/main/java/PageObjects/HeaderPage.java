@@ -10,6 +10,7 @@ public class HeaderPage {
     private By myAccountLinkLocator = By.className("caret");
     private By loginButtonLocator = By.linkText("Login");
     private By registerButtonlocator = By.linkText("Register");
+    private By shoppingCartLocator = By.linkText("Shopping Cart");
 
     public HeaderPage(WebDriver _driver){
         this.driver = _driver;
@@ -25,6 +26,10 @@ public class HeaderPage {
 
     public void ClickOnRegisterButton(){
         driver.findElement(registerButtonlocator).click();
+    }
+
+    public void clickOnCartButton(){
+        driver.findElement(shoppingCartLocator).click();
     }
 
 

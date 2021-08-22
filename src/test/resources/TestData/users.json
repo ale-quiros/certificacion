@@ -1,0 +1,14 @@
+{
+  "dataSet": [
+    {
+      "email" : "ale@test.com",
+      "password" : "1234",
+      "validAccount": true
+    },
+    {
+      "email" : "ale@test.com",
+      "password" : "123",
+      "validAccount": false
+    }
+  ]
+}
