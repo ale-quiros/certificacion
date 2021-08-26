@@ -14,6 +14,7 @@ public class ProductPage extends BasePage{
     public By ProductQuantityInputSelector = By.id("input-quantity");
     public By AddButtonSelector = By.id("button-cart");
     public By AlertSuccess = By.cssSelector(".alert-success");
+    public By ProductAddedSuccessfuly = By.xpath("//div[@class='alert alert-success alert-dismissible']");
 
     public boolean isTitleDisplayed(String name){
         return driver.findElement(By.xpath(ProductTitleSelector.replace("<name>", name))).isDisplayed();
@@ -30,6 +31,10 @@ public class ProductPage extends BasePage{
 
     public boolean isAlertSuccessDisplayed(){
         return driver.findElement(AlertSuccess).isDisplayed();
+    }
+
+    public String getResultProductAddedMessage(){
+        return driver.findElement(ProductAddedSuccessfuly).getText();
     }
 
 }

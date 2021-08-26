@@ -12,27 +12,25 @@ public class TestSearch extends BaseClass {
     @Test
     @Parameters ({"searchCriteria", "expectedResult"})
     public void Validate_Search(@Optional("macbook") String searchCriteria, @Optional ("3") String expectedResult){
-        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         int results = Integer.parseInt(expectedResult);
 
-        searchResultsPage.findElement(searchCriteria);
+        searchResultsPage().findElement(searchCriteria);
 
         Assert.assertTrue(driver.getCurrentUrl().contains("search=" + searchCriteria));
-        int actualResults =  searchResultsPage.getResultsCount();
+        int actualResults =  searchResultsPage().getResultsCount();
         Assert.assertEquals(actualResults, results,
                 String.format("Expecting %s results but got %s", results, actualResults));
     }
 
     @Test
     public void Test_Empty_Results(){
-        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         String searchCriteria = "Star Wars";
         int expectedResult = 0;
 
-        searchResultsPage.findElement(searchCriteria);
+        searchResultsPage().findElement(searchCriteria);
 
-        Assert.assertEquals(searchResultsPage.getResultsCount(), expectedResult,
-                String.format("Expecting %s results but got %s", expectedResult, searchResultsPage.getResultsCount()));
+        Assert.assertEquals(searchResultsPage().getResultsCount(), expectedResult,
+                String.format("Expecting %s results but got %s", expectedResult, searchResultsPage().getResultsCount()));
     }
 
     @Test (dataProvider = "getSearchDataFromJson", dataProviderClass = SearchProvider.class) //antes dataProvider = "getSearchData"

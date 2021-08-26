@@ -13,6 +13,7 @@ public class PageObjectHandler {
     private SearchResultsPage searchResultsPage;
     private HomePage homePage;
     private ProductPage productPage;
+    private ProductInfoPage productInfoPage;
     private ShoppingCartPage shoppingCartPage;
 
     public PageObjectHandler(){}
@@ -51,5 +52,10 @@ public class PageObjectHandler {
         if(this.productPage == null)
             productPage = new ProductPage(driver);
         return productPage;
+    }
+    public ProductInfoPage productInfoPage(){
+        if(this.productInfoPage == null)
+            productInfoPage = new ProductInfoPage(driver);
+        return productInfoPage;
     }
 }

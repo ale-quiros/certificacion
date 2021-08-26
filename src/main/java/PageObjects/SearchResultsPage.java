@@ -12,6 +12,8 @@ public class SearchResultsPage extends BasePage{
     private By searchFieldLocator = By.name("search");
     private By searchButtonLocator = By.xpath("//button[@class='btn btn-default btn-lg']");
 
+    private By productResultLocator = By.linkText("MacBook Air");
+
     public SearchResultsPage(WebDriver _driver){
         super(_driver);
     }
@@ -27,5 +29,11 @@ public class SearchResultsPage extends BasePage{
     public void findElement(String _searchCriteria){
         driver.findElement(searchFieldLocator).sendKeys(_searchCriteria);
         driver.findElement(searchButtonLocator).click();
+    }
+
+    public void addToCartElement(String _searchCriteria){
+        driver.findElement(searchFieldLocator).sendKeys(_searchCriteria);
+        driver.findElement(searchButtonLocator).click();
+        driver.findElement(productResultLocator).click();
     }
 }

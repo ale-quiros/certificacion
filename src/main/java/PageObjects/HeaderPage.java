@@ -11,6 +11,10 @@ public class HeaderPage extends BasePage{
     private By registerButtonlocator = By.linkText("Register");
     private By shoppingCartLocator = By.linkText("Shopping Cart");
     private By yourStoreButtonLocator = By.linkText("Your Store");
+    private By yourCurrencyLocator = By.xpath("//i[@class='fa fa-caret-down']");
+    private By euroCurrencyLocator = By.name("EUR");
+    private By poundCurrencyLocator = By.name("GBP");
+    private By dolarCurrencyLocator = By.name("USD");
 
     public HeaderPage(WebDriver _driver){
         super(_driver);
@@ -33,6 +37,14 @@ public class HeaderPage extends BasePage{
     }
 
     public void clickOnYourStoreButton() {driver.findElement(yourStoreButtonLocator).click();}
+
+    public void clickOnCurencyButton() {driver.findElement(yourCurrencyLocator).click();}
+
+    public void selectEuroCurrencyOption() {driver.findElement(euroCurrencyLocator).click();}
+
+    public void selectPoundCurrencyOption() {driver.findElement(poundCurrencyLocator).click();}
+
+    public void selectDolarCurrencyOption() {driver.findElement(dolarCurrencyLocator).click();}
 
 
 }

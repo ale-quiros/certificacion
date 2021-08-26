@@ -13,6 +13,10 @@ public class ShoppingCartPage extends BasePage{
     private By inputRowSelector = By.cssSelector("input");
     private By imageSelector = By.cssSelector("img");
     private By shoppingCartRows = By.xpath("//div[@id='content']//div[contains(@class, 'table-responsive')]//tr");
+    private By checkoutButtonLocator = By.xpath("//div[@class='pull-right']");
+
+  //  public By AlertFail = By.cssSelector(".alert-success");
+    public By productNotStock = By.xpath("//div[@class='alert alert-danger alert-dismissible']");
 
     public ShoppingCartPage(WebDriver _driver){
         super(_driver);
@@ -47,4 +51,16 @@ public class ShoppingCartPage extends BasePage{
     public int getAmountOfShoppingCartRows(){
         return driver.findElements(shoppingCartRows).size() - 1;
     }
+
+    public void clickOnCheckoutButton(){
+        driver.findElement(checkoutButtonLocator).click();
+    }
+
+    public boolean isAlertNotStockDisplayed(){
+        return driver.findElement(productNotStock).isDisplayed();
+    }
+
+  /*  public String getFailProductAddedMessage(){
+        return driver.findElement(productNotStock).getText();
+    }*/
 }

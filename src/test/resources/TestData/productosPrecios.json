@@ -1,0 +1,30 @@
+{
+  "dataSet": [
+    {
+      "producto" : "iPhone",
+      "precioDolar" : 123.20,
+      "precioPound" : 92.93,
+      "precioEuro" : 106.04
+    },
+
+    {
+      "producto" : "MacBook",
+      "precioDolar" : 602.00,
+      "precioPound" : 454.10,
+      "precioEuro" : 518.16
+    },
+
+    {
+      "producto" : "Apple Cinema 30\"",
+      "precioDolar" : 110.00,
+      "precioPound" : 82.98,
+      "precioEuro" : 94.68
+    },
+    {
+      "producto" : "Canon EOS 5D",
+      "precioDolar" : 98.00,
+      "precioPound" : 73.92,
+      "precioEuro" : 84.35
+    }
+  ]
+}

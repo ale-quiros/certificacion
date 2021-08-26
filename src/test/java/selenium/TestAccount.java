@@ -35,12 +35,13 @@ public class TestAccount extends BaseClass {
         Assert.assertEquals(expectedMessage.toLowerCase(), alertMessage.getText().toLowerCase().trim());
     }
 
+    @Description("nuevos accounts con random emails para la tarea")
     @Test
     public void Test_Create_New_Account(){
         //setup
         String firstname = "ale";
         String lastname = "quiros";
-        String email = "aleq@test.com";
+        String email = GeneralUtils.generateRandomEmail();
         String telephone = "88888888";
         String password ="123456";
         String expectedMessage = "Your Account Has Been Created!";
@@ -48,6 +49,22 @@ public class TestAccount extends BaseClass {
         registerPage().GoTo();
         registerPage().FillForm(firstname, lastname, email, telephone, password);
 
-        Assert.assertEquals(registerPage().GetConfirmationMessage(), expectedMessage);
+        Assert.assertEquals(registerPage().getConfirmationMessage(), expectedMessage);
+    }
+
+    @Description("Duplicated Emails para la tarea")
+    @Test
+    public void Test_Duplicated_Email(){
+        //setup
+        String firstname = "ale";
+        String lastname = "quiros";
+        String email = "aleq@test.com";
+        String telephone = "88888888";
+        String password ="123456";
+        String expectedMessage = "Warning: E-Mail Address is already registered!";
+
+        registerPage().GoTo();
+        registerPage().FillForm(firstname, lastname, email, telephone, password);
+        Assert.assertEquals(registerPage().getDuplicatedAccountMessage(), expectedMessage);
     }
 }
