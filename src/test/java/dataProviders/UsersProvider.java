@@ -32,4 +32,12 @@ public class UsersProvider {
         }
         return returnValue;
     }
+
+    @DataProvider (name = "duplicatedEmailProvider")
+    public Object [][] duplicatedEmailProvider(){
+        return new Object[][] {
+                {"juan.piedra@ucreativa.com"},
+                {"aleq@test.com"}
+        };
+    }
 }

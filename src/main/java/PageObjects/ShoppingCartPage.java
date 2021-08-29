@@ -60,7 +60,8 @@ public class ShoppingCartPage extends BasePage{
         return driver.findElement(productNotStock).isDisplayed();
     }
 
-  /*  public String getFailProductAddedMessage(){
-        return driver.findElement(productNotStock).getText();
-    }*/
+    public String getFailProductAddedMessage(){
+        String failMessage = (driver.findElement(productNotStock).getText()).trim();
+        return failMessage.substring(0, failMessage.indexOf("\n"));
+    }
 }

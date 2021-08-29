@@ -2,6 +2,10 @@ package PageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class ProductPage extends BasePage{
 
@@ -26,6 +30,8 @@ public class ProductPage extends BasePage{
     }
 
     public void clickAddButton(){
+        WebDriverWait wait = new WebDriverWait(driver, 10 );
+        wait.until(ExpectedConditions.presenceOfElementLocated(AddButtonSelector));
         driver.findElement(AddButtonSelector).click();
     }
 
@@ -34,7 +40,13 @@ public class ProductPage extends BasePage{
     }
 
     public String getResultProductAddedMessage(){
-        return driver.findElement(ProductAddedSuccessfuly).getText();
+        String successfulMessage = (driver.findElement(ProductAddedSuccessfuly).getText()).trim();
+        return successfulMessage.substring(0, successfulMessage.indexOf("\n"));
+    }
+
+    public void addToCart(int _cantidad){
+        setQuantity(_cantidad);
+        clickAddButton();
     }
 
 }

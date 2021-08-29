@@ -1,5 +1,7 @@
 package selenium;
 
+import dataProviders.SearchProvider;
+import dataProviders.UsersProvider;
 import io.qameta.allure.Description;
 import org.openqa.selenium.*;
 import org.testng.Assert;
@@ -53,12 +55,12 @@ public class TestAccount extends BaseClass {
     }
 
     @Description("Duplicated Emails para la tarea")
-    @Test
-    public void Test_Duplicated_Email(){
+    @Test (dataProvider = "duplicatedEmailProvider", dataProviderClass = UsersProvider.class)
+    public void Test_Duplicated_Email(String _duplicatedEmail){
         //setup
         String firstname = "ale";
         String lastname = "quiros";
-        String email = "aleq@test.com";
+        String email = _duplicatedEmail;   //"aleq@test.com";
         String telephone = "88888888";
         String password ="123456";
         String expectedMessage = "Warning: E-Mail Address is already registered!";

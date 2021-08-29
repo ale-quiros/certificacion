@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
 
-public class PreciosProductosProvider {
+public class ProductosInfoProvider {
 
     @DataProvider(name ="getPreciosDataFromJson")
     private Object[][] getPreciosDataFromJson() throws FileNotFoundException {
@@ -24,6 +24,13 @@ public class PreciosProductosProvider {
             each[0] = testData.get(index++);
         }
         return returnValue;
+    }
+
+    @DataProvider(name ="addProductsToCartProvider")
+    public Object [][] addProductsToCartProvider(){
+        return new Object[][] {
+                {"Mac Air", 3}
+        };
     }
 
 }

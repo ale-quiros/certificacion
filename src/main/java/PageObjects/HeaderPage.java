@@ -46,5 +46,19 @@ public class HeaderPage extends BasePage{
 
     public void selectDolarCurrencyOption() {driver.findElement(dolarCurrencyLocator).click();}
 
+    public void selectCurrency(String _currency){
+        clickOnCurencyButton();
+        switch(_currency) {
+            case "euro":
+                selectEuroCurrencyOption();
+                break;
+            case "pound":
+                selectPoundCurrencyOption();
+                break;
+            default:
+                selectDolarCurrencyOption();
+        }
+    }
+
 
 }

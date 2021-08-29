@@ -1,6 +1,8 @@
 package selenium;
 
 import PageObjects.*;
+import dataProviders.ProductosInfoProvider;
+import dataProviders.UsersProvider;
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -43,29 +45,17 @@ public class AddToCartTests extends BaseClass {
     }
 
     @Description("CheckOutProduct para la tarea")
-    @Test
-    public void Test_Check_Out_Product(){
-        String productName = "Mac Air";
-        int cantidad = 3;
-        String expectedMessage = "Success: You have added MacBook Air to your shopping cart!";
-        String expectedCheckOutMessage = "Products marked with *** are not available in the desired quantity or not in stock!";
+    @Test (dataProvider = "addProductsToCartProvider", dataProviderClass = ProductosInfoProvider.class)
+    public void Test_Check_Out_Product(String _producto, int _cantidad){
+        final String EXPECTED_ADD_TO_CART_MESSAGE = "Success: You have added MacBook Air to your shopping cart!";
+        final String EXPECTED_CHECK_OUT_FAIL_MESSAGE = "Products marked with *** are not available in the desired quantity or not in stock!";
 
-        searchResultsPage().addToCartElement(productName);
-        productPage().setQuantity(cantidad);
-        productPage().clickAddButton();
-
-        try {
-            Thread.sleep(2);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(productPage().isAlertSuccessDisplayed());
+        searchResultsPage().addToCartElement(_producto);
+        productPage().addToCart(_cantidad);
+        Assert.assertEquals(productPage().getResultProductAddedMessage(), EXPECTED_ADD_TO_CART_MESSAGE);
 
         headerPage().clickOnCartButton();
         shoppingCartPage().clickOnCheckoutButton();
-
-        Assert.assertTrue(shoppingCartPage().isAlertNotStockDisplayed());
-
+        Assert.assertEquals(shoppingCartPage().getFailProductAddedMessage() , EXPECTED_CHECK_OUT_FAIL_MESSAGE);
     }
-
 }
